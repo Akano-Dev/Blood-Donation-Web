@@ -1,0 +1,97 @@
+body {
+    /* background: linear-gradient(180deg, rgb(125, 10, 10) , rgb(163, 29, 29) , rgb(247, 247, 247)) */
+    /* background: linear-gradient(180deg, #8B0000, #B22222, #FF6666, #FFFFFF); */
+    /* background: linear-gradient(to bottom, #B22222, #FFB6C1); */
+    background: white;
+
+}
+
+.greeting_message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    margin-top: -340px;
+    
+}
+
+h1 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 100px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.paragraph {
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 10px;
+    background: #B22222;
+    color: white;
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    border-radius: 8px;
+    transition: 0.3s;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+    background: #7D0A0A;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+    margin-top: 30px;
+}
+
+#Image1:hover {
+    transform: scale(1.1) translateY(-5px);
+    transition:0.3s ease-in-out;
+}
+
+#Image2:hover {
+    transform: scale(1.1) translateY(-5px);
+    transition:0.3s ease-in-out;
+}
+
+#Image3:hover {
+    transform: scale(1.1) translateY(-5px);
+    transition:0.3s ease-in-out;
+}
+
+.image-box {
+    text-align: center;
+}
+
+.image-box img {
+    width: 350px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px rgba( 0, 0, 0, 0.2);
+}
+
+.image-box p {
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 25px;
+}
+
+.fp {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 1px -4px 5px rgba( 0, 0, 0, 0.1);
+    width: 100%;
+    /* border-top: 0px solid black; */
+}

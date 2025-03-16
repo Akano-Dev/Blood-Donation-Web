@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .homepage-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d9534f;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            width: 150px; /* Set a fixed width for labels */
+        }
+
+        input, select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px; /* Set fixed width for inputs and selects */
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        button.previous-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        #successMessage {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="homepage-container">
+        <h1>Patient Information</h1>
+        <form id="patientForm" onsubmit="validatePatientForm(event)">
+            <!-- Name Section -->
+            <div class="form-row">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required maxlength="20" pattern="[A-Za-z]+" title="Only letters are allowed, and max 20 characters.">
+            </div>
+
+            <div class="form-row">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required maxlength="20" pattern="[A-Za-z]+" title="Only letters are allowed, and max 20 characters.">
+            </div>
+            
+            <!-- Age Section -->
+            <div class="form-row">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="1" max="100" required>
+            </div>
+            
+            <!-- Gender Section -->
+            <div class="form-row">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            
+            <!-- Blood Group Section -->
+            <div class="form-row">
+                <label for="bloodGroup">Blood Group:</label>
+                <select id="bloodGroup" name="bloodGroup" required>
+                    <option value="" disabled selected>Select Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="B+">B+</option>
+                    <option value="AB+">AB+</option>
+                    <option value="O+">O+</option>
+                    <option value="A-">A-</option>
+                    <option value="B-">B-</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            
+            <!-- Amount Section -->
+            <div class="form-row">
+                <label for="amount">Amount (100-500 ml):</label>
+                <input type="number" id="amount" name="amount" min="100" max="500" required>
+            </div>
+            
+            <!-- Contact Number Section -->
+            <div class="form-row">
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" name="contact" maxlength="10" required pattern="\d{10}" title="Contact number must be exactly 10 digits.">
+            </div>
+            
+            <!-- Buttons -->
+            <div class="form-buttons">
+                <button type="submit">Submit</button>
+                <button type="button" class="previous-btn" onclick="goBack()">Previous</button>
+            </div>
+            
+            <!-- Success Message -->
+            <p id="successMessage" style="display: none;">Your details are submitted. We will contact you.</p>
+        </form>
+    </div>
+
+    <script>
+        function validatePatientForm(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const age = document.getElementById("age").value;
+            const contact = document.getElementById("contact").value;
+            const amount = document.getElementById("amount").value;
+            
+            // Validate first name and last name
+            if (firstName.length > 20 || lastName.length > 20) {
+                alert("First name and last name must be within 20 characters.");
+                return;
+            }
+
+            // Validate age
+            if (age < 1 || age > 100) {
+                alert("Age must be between 1 and 100.");
+                return;
+            }
+
+            // Validate contact number (must be 10 digits)
+            if (contact.length !== 10 || isNaN(contact)) {
+                alert("Contact number must be exactly 10 digits.");
+                return;
+            }
+
+            // Validate amount (must be between 100 and 500 ml)
+            if (amount < 100 || amount > 500) {
+                alert("Amount must be between 100 and 500 ml.");
+                return;
+            }
+            
+            // Show success message after validation
+            const successMessage = document.getElementById("successMessage");
+            successMessage.style.display = "block"; // Show success message
+        }
+
+        function goBack() {
+            window.history.back(); // Go to the previous page
+        }
+    </script>
+</body>
+</html>
